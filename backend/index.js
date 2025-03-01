@@ -8,8 +8,9 @@ const uploadController = require('./controllers/uploadController')
 const app=express()
 
 // Database connection 
+// mongoose.connect("mongodb://127.0.0.1:27017/food-delivery")
 mongoose.connect(process.env.Mongo_URL)
-        .then(()=>console.log("Data base connected successfully"))
+        .then(()=>console.log("Data base connected successfully~"))
 
 //Routes and Middleware
 //this two middleware make req.body accessible,otherwise is would be undefine!!!!
