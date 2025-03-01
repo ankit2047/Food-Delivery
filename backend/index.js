@@ -9,14 +9,19 @@ const app=express()
 
 // Database connection 
 // mongoose.connect("mongodb://127.0.0.1:27017/food-delivery")
-const mongodb = process.env.Mongo_URL;
 
-if (!mongodb) {
-  console.error('Database URI is not defined');
+try {
+        const mongodb = process.env.Mongo_URL;
+
+        if (!mongodb) {
+          console.error('Database URI is not defined');
+        }
+        mongoose.connect(mongodb)
+                .then(()=>console.log("Data base connected successfully~"))
+          
+} catch (error) {
+        console.error('Connection failed', error);
 }
-mongoose.connect(mongodb)
-        .then(()=>console.log("Data base connected successfully~"))
-
 //Routes and Middleware
 //this two middleware make req.body accessible,otherwise is would be undefine!!!!
 app.use(cors())
