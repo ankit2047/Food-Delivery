@@ -9,7 +9,12 @@ const app=express()
 
 // Database connection 
 // mongoose.connect("mongodb://127.0.0.1:27017/food-delivery")
-mongoose.connect(process.env.Mongo_URL)
+const mongodb = process.env.Mongo_URL;
+
+if (!mongodb) {
+  console.error('Database URI is not defined');
+}
+mongoose.connect(mongodb)
         .then(()=>console.log("Data base connected successfully~"))
 
 //Routes and Middleware
